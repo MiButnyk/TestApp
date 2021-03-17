@@ -111,17 +111,26 @@ public class DAO {
     public void search(String str) {
         str = str.toLowerCase();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet res = statement.executeQuery("select lector_name " +
+            Statement statement1 = connection.createStatement();
+            Statement statement2 = connection.createStatement();
+            ResultSet res1 = statement1.executeQuery("select lector_name " +
                     "from lector " +
                     "where lower(lector_name) like '%" + str + "%'");
+            ResultSet res2 = statement2.executeQuery("select department_name " +
+                    "from department " +
+                    "where lower(department_name) like '%" + str + "%'");
             int count = 0;
             StringBuilder stringBuilder = new StringBuilder();
             String separator = "";
-            while (res.next()) {
+            while (res1.next()) {
                 stringBuilder.append(separator);
                 separator = ", ";
-                stringBuilder.append(res.getString("lector_name"));
+                stringBuilder.append(res1.getString("lector_name"));
+                count++;
+            }
+            while (res2.next()) {
+                stringBuilder.append(separator);
+                stringBuilder.append(res2.getString("department_name"));
                 count++;
             }
             if (count == 0) {
@@ -129,7 +138,8 @@ public class DAO {
             } else {
                 System.out.println(stringBuilder);
             }
-            statement.close();
+            statement1.close();
+            statement2.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
