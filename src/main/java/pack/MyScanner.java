@@ -29,28 +29,23 @@ public class MyScanner {
             switch (input) {
                 case 1:
                     System.out.print("Who is head of department ");
-                    String str1 = nextLine();
-                    service.head(str1);
+                    service.head(nextLine());
                     break;
                 case 2:
                     System.out.print("Show statistics of department ");
-                    String str2 = nextLine();
-                    service.statistics(str2);
+                    service.statistics(nextLine());
                     break;
                 case 3:
                     System.out.print("Show the average salary for the department ");
-                    String str3 = nextLine();
-                    service.salary(str3);
+                    service.salary(nextLine());
                     break;
                 case 4:
                     System.out.print("Show count of employee for department ");
-                    String str4 = nextLine();
-                    service.quantity(str4);
+                    service.quantity(nextLine());
                     break;
                 case 5:
                     System.out.print("Global search by ");
-                    String str5 = nextLine();
-                    service.search(str5);
+                    service.search(nextLine());
                     break;
                 default:
                     break;
@@ -58,6 +53,7 @@ public class MyScanner {
             System.out.print("Your input is: ");
             input = Integer.parseInt(in.nextLine());
         }
+        in.close();
     }
 
     private String nextLine() {
