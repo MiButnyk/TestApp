@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 @org.springframework.stereotype.Service
-public class Service {
+public class MyService {
     private final DAO dao;
 
     @Autowired
-    public Service(@Qualifier("oracle") DAO dao) {
+    public MyService(@Qualifier("oracle") DAO dao) {
         this.dao = dao;
     }
 
