@@ -1,4 +1,4 @@
-package pack;
+package testApp;
 
 import org.springframework.stereotype.Repository;
 
@@ -130,6 +130,7 @@ public class DAO {
             }
             while (res2.next()) {
                 stringBuilder.append(separator);
+                separator = ", ";
                 stringBuilder.append(res2.getString("department_name"));
                 count++;
             }
